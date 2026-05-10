@@ -1,12 +1,15 @@
 import Link from "next/link";
 
+import ImageSliceShow from "@/components/images/ImageSliceShow";
 import classes from "./page.module.css";
 
 export default function Home() {
   return (
     <>
       <header className={classes.header}>
-        <div className={classes.slideshow}></div>
+        <div className={classes.slideshow}>
+          <ImageSliceShow />
+        </div>
         <div>
           <div className={classes.hero}>
             <h1>Food for Foodies</h1>
