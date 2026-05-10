@@ -1,9 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 
 import Logo from "@/assets/logo.png";
 import styles from "./Header.module.css";
 import HeaderBackground from "./HeaderBackground";
+import NavLink from "./NavLink";
 
 function Header() {
   return (
@@ -18,10 +21,10 @@ function Header() {
         <nav className={styles.nav}>
           <ul>
             <li>
-              <Link href="/meals">Browse meals</Link>
+              <NavLink href="/meals">Browse meals</NavLink>
             </li>
             <li>
-              <Link href="/community">Foodies community</Link>
+              <NavLink href="/community">Foodies community</NavLink>
             </li>
           </ul>
         </nav>
