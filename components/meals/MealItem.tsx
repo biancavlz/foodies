@@ -15,7 +15,12 @@ export default function MealItem({
     <article className={styles.meal}>
       <header>
         <div className={styles.image}>
-          <Image src={image} alt={title} fill />
+          <Image
+            src={image}
+            alt={title}
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
         </div>
         <div className={styles.headerText}>
           <h2>{title}</h2>
