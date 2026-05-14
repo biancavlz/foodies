@@ -1,16 +1,21 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import { getMeal } from "@/lib/meals";
+import { notFound } from "next/navigation";
 
 type MealDetailsProps = {
-  params: {
+  params: Promise<{
     mealSlug: string;
-  };
+  }>;
 };
 
 async function MealsDetails({ params }: MealDetailsProps) {
-  const { mealSlug } = params;
+  const { mealSlug } = await params;
   const meal = await getMeal(mealSlug);
+
+  if (!meal) {
+    notFound();
+  }
 
   meal.instructions = meal.instructions.replace(/\n/g, "<br />");
 
