@@ -6,3 +6,8 @@ export type Meal = {
   summary: string;
   creator: string;
 };
+
+export type MealImagePicker = {
+  label: string;
+  name: string;
+};
