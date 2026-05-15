@@ -1,5 +1,6 @@
 "use server";
 
+import { redirect } from "next/navigation";
 import { saveMeal } from "./meals";
 
 interface Meal {
@@ -22,4 +23,5 @@ export async function shareMeal(formData: FormData): Promise<void> {
   };
 
   await saveMeal(meal);
+  redirect("/meals");
 }
