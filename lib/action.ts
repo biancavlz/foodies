@@ -2,6 +2,7 @@
 
 import { redirect } from "next/navigation";
 import { saveMeal } from "./meals";
+import { revalidatePath } from "next/cache";
 
 interface Meal {
   title: string;
@@ -49,5 +50,7 @@ export async function shareMeal(
   }
 
   await saveMeal(meal);
+
+  revalidatePath("/meals");
   redirect("/meals");
 }
