@@ -4,6 +4,11 @@ import { Suspense } from "react";
 import MealList from "@/components/meals/MealList";
 import styles from "./page.module.css";
 
+export const metadata = {
+  title: "All meals | Footies",
+  description: "Brows delicious meals shared by our community",
+};
+
 async function Home() {
   return (
     <>

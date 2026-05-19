@@ -9,6 +9,20 @@ type MealDetailsProps = {
   }>;
 };
 
+export async function generateMetadata({ params }: MealDetailsProps) {
+  const { mealSlug } = await params;
+  const meal = await getMeal(mealSlug);
+
+  if (!meal) {
+    notFound();
+  }
+
+  return {
+    title: `Foodies | Meal ${meal.slug}`,
+    description: meal.summary,
+  };
+}
+
 async function MealsDetails({ params }: MealDetailsProps) {
   const { mealSlug } = await params;
   const meal = await getMeal(mealSlug);
@@ -28,8 +42,7 @@ async function MealsDetails({ params }: MealDetailsProps) {
         <div className={styles.headerText}>
           <h1>{meal.title}</h1>
           <p className={styles.creator}>
-            by
-            <a href={`mailto: ${`meal.creator_email`} `}>{meal.creator}</a>
+            by <a href={`mailto:${meal.creator_email}`}>{meal.creator}</a>
           </p>
           <p className={styles.summary}>{meal.summary}</p>
         </div>
@@ -37,7 +50,9 @@ async function MealsDetails({ params }: MealDetailsProps) {
       <main>
         <p
           className={styles.instructions}
-          dangerouslySetInnerHTML={{ __html: meal.instructions }}
+          dangerouslySetInnerHTML={{
+            __html: meal.instructions,
+          }}
         />
       </main>
     </>
